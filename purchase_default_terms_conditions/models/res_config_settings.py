@@ -11,6 +11,7 @@ class ResConfigSettings(models.TransientModel):
         related="company_id.purchase_note",
         string="Purchase Terms & Conditions",
         readonly=False,
+        translate=True,
     )
 
     use_purchase_note = fields.Boolean(

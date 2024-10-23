@@ -12,36 +12,21 @@
             ref="purchase.res_config_settings_view_form_purchase"
         />
         <field name="arch" type="xml">
-            <xpath expr="//div[@name='purchase_setting_container']" position="inside">
-                <div class="col-12 col-lg-6 o_setting_box">
-                    <div class="o_setting_left_pane">
-                        <field name="use_purchase_note" />
-                    </div>
-                    <div class="o_setting_right_pane">
-                        <label for="use_purchase_note" />
-                        <span
-                            class="fa fa-lg fa-building-o"
-                            title="Values set here are company-specific."
-                            aria-label="Values set here are company-specific."
-                            groups="base.group_multi_company"
-                            role="img"
-                        />
-                        <div class="text-muted">
-                            Show standard terms &amp; conditions on orders
-                        </div>
-                        <div
-                            class="content-group"
-                            attrs="{'invisible': [('use_purchase_note','=',False)]}"
-                        >
-                            <div class="mt16">
-                                <field
-                                    name="purchase_note"
-                                    placeholder="Insert your terms &amp; conditions here..."
-                                />
-                            </div>
+            <xpath expr="//block[@name='purchase_setting_container']" position="inside">
+                <!-- TODO: #2443  Update res.config.settings -->
+                <setting
+                    id="use_purchase_note"
+                    company_dependent="1"
+                    help="Show standard terms &amp; conditions on orders"
+                >
+                    <field name="use_purchase_note" />
+                    <div class="content-group" invisible="not use_purchase_note">
+                        <div class="row mt16">
+                            <label for="purchase_note" class="col-lg-4 o_light_label" />
+                            <field name="purchase_note" />
                         </div>
                     </div>
-                </div>
+                </setting>
             </xpath>
         </field>
     </record>
