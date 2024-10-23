@@ -1,0 +1,35 @@
+<!-- Copyright 2020 - TODAY, Marcel Savegnago - Escodoo
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="res_config_settings_view_form_purchase">
+        <field
+            name="name"
+        >res.config.settings.form (in purchase_default_terms_conditions)</field>
+        <field name="model">res.config.settings</field>
+        <field
+            name="inherit_id"
+            ref="purchase.res_config_settings_view_form_purchase"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//block[@name='purchase_setting_container']" position="inside">
+                <!-- TODO: #2443  Update res.config.settings -->
+                <setting
+                    id="use_purchase_note"
+                    company_dependent="1"
+                    help="Show standard terms &amp; conditions on orders"
+                >
+                    <field name="use_purchase_note" />
+                    <div class="content-group" invisible="not use_purchase_note">
+                        <div class="row mt16">
+                            <label for="purchase_note" class="col-lg-4 o_light_label" />
+                            <field name="purchase_note" />
+                        </div>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
